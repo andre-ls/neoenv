@@ -1,4 +1,4 @@
-" vim-bootstrap 2022-03-26 18:51:20
+" vim-bootstrap 2022-05-13 21:38:05
 
 "*****************************************************************************
 "" Vim-Plug core
@@ -49,8 +49,8 @@ Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
-Plug 'tomasiser/vim-code-dark'
-
+Plug 'altercation/vim-colors-solarized'
+Plug 'ryanoasis/vim-devicons'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -148,8 +148,11 @@ set ruler
 set number
 
 let no_buffers_menu=1
-colorscheme codedark
+colorscheme solarized
+set background=dark
 
+"Remove Neovim --INSERT--
+set noshowmode
 
 " Better command line completion 
 set wildmenu
@@ -172,7 +175,7 @@ else
 
   " IndentLine
   let g:indentLine_enabled = 1
-  let g:indentLine_concealcursor = 0
+  let g:indentLine_concealcursor = ''
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
@@ -182,7 +185,7 @@ endif
 
 
 "" Disable the blinking cursor.
-set gcr=a:blinkon0
+"set gcr=a:blinkon0
 
 au TermEnter * setlocal scrolloff=0
 au TermLeave * setlocal scrolloff=3
@@ -211,7 +214,7 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'solarized'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -435,7 +438,7 @@ nnoremap <Leader>o :.Gbrowse<CR>
 " vim-python
 augroup vimrc-python
   autocmd!
-  autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 colorcolumn=79
+  autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8 "colorcolumn=79
       \ formatoptions+=croq softtabstop=4
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
@@ -457,6 +460,8 @@ let g:jedi#smart_auto_mappings = 0
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
+let g:airline_section_z = '%{strftime("%H:%M")}'
+let g:airline_skip_empty_sections = 1
 
 " Syntax highlight
 let python_highlight_all = 1
@@ -474,25 +479,26 @@ endif
 "*****************************************************************************
 "" Convenience variables
 "*****************************************************************************
-
 " vim-airline
+
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
 if !exists('g:airline_powerline_fonts')
-  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_sep = '🭡'
   let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline_left_sep          = '▶'
-  let g:airline_left_alt_sep      = '»'
-  let g:airline_right_sep         = '◀'
-  let g:airline_right_alt_sep     = '«'
+  let g:airline_left_sep          = '🭡'
+  let g:airline_left_alt_sep      = '|'
+  let g:airline_right_sep         = '🭖'
+  let g:airline_right_alt_sep     = '|'
   let g:airline#extensions#branch#prefix     = '⤴' "➔, ➥, ⎇
   let g:airline#extensions#readonly#symbol   = '⊘'
   let g:airline#extensions#linecolumn#prefix = '¶'
   let g:airline#extensions#paste#symbol      = 'ρ'
   let g:airline_symbols.linenr    = '␊'
-  let g:airline_symbols.branch    = '⎇'
+  "let g:airline_symbols.branch    = '⎇'
+  let g:airline_symbols.branch = ''
   let g:airline_symbols.paste     = 'ρ'
   let g:airline_symbols.paste     = 'Þ'
   let g:airline_symbols.paste     = '∥'
