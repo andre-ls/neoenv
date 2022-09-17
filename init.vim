@@ -37,20 +37,21 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
-Plug 'vim-scripts/grep.vim'
-Plug 'vim-scripts/CSApprox'
-Plug 'Raimondi/delimitMate'
-Plug 'majutsushi/tagbar'
-Plug 'dense-analysis/ale'
-Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-fugitive' " Git Wrapper
+Plug 'vim-airline/vim-airline' " Tabline
+Plug 'vim-airline/vim-airline-themes' " Tabline Themes
+Plug 'airblade/vim-gitgutter' " Git Diffs
+Plug 'vim-scripts/grep.vim' " Grep Search
+Plug 'vim-scripts/CSApprox' " Make GVim-only colorschemes Just Work in terminal Vim
+Plug 'Raimondi/delimitMate' " Auto-completion for quotes, parens, brackets, etc.
+Plug 'majutsushi/tagbar' " Navigation by Tags
+Plug 'dense-analysis/ale' " Linter
+Plug 'Yggdroot/indentLine' " Show Indent Levels
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
-Plug 'altercation/vim-colors-solarized'
-Plug 'ryanoasis/vim-devicons'
+Plug 'dracula/vim', { 'as': 'dracula' } " Theme
+Plug 'ryanoasis/vim-devicons' " Icons
+Plug 'tribela/vim-transparent' " Transparent Background
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -81,6 +82,15 @@ Plug 'honza/vim-snippets'
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+Plug 'deoplete-plugins/deoplete-jedi'
 
 "*****************************************************************************
 "*****************************************************************************
@@ -148,8 +158,7 @@ set ruler
 set number
 
 let no_buffers_menu=1
-colorscheme solarized
-set background=dark
+colorscheme dracula
 
 "Remove Neovim --INSERT--
 set noshowmode
@@ -214,7 +223,7 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'violet'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -452,7 +461,7 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
-let g:jedi#smart_auto_mappings = 0
+let g:jedi#smart_auto_mappings = 1
 
 " ale
 :call extend(g:ale_linters, {
