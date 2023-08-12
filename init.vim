@@ -49,7 +49,7 @@ Plug 'dense-analysis/ale' " Linter
 Plug 'Yggdroot/indentLine' " Show Indent Levels
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
-Plug 'dracula/vim', { 'as': 'dracula' } " Theme
+Plug 'cocopon/iceberg.vim' " Theme
 Plug 'ryanoasis/vim-devicons' " Icons
 Plug 'tribela/vim-transparent' " Transparent Background
 
@@ -158,7 +158,7 @@ set ruler
 set number
 
 let no_buffers_menu=1
-colorscheme dracula
+colorscheme iceberg
 
 "Remove Neovim --INSERT--
 set noshowmode
@@ -172,7 +172,7 @@ set mouse=a
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
-set gfn=Monospace\ 10
+set gfn=JetBrainsMono\ 15
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
@@ -223,12 +223,13 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'violet'
+"let g:airline_theme = 'luna'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
+let g:airline_powerline_fonts = 1
 
 "*****************************************************************************
 "" Abbreviations
