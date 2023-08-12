@@ -1,6 +1,6 @@
-# vim-configs
+# neovim-configs
 
-Repository containing my Vim Configuration File. 
+Repository containing my NeoVim Configuration File. 
 
 The first version was generated at https://vim-bootstrap.com/, for Python Language, CodeDark theme and Neovim.
 
