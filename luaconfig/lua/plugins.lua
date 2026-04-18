@@ -2,7 +2,6 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter", --Highlighter
     "m4xshen/autoclose.nvim", --Autoclose Brackets, Quotes, etc.
     "lewis6991/gitsigns.nvim", --Git Signs
-	"github/copilot.vim",
 	"terrortylor/nvim-comment", -- Comment Keybindings
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }, --Identation Lines
     {
@@ -14,10 +13,10 @@ local plugins = {
     	dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
     {
-	"folke/tokyonight.nvim", --Theme
-	lazy = false,
-	priority = 1000,
-	opts = {},
+		"folke/tokyonight.nvim", --Theme
+		lazy = false,
+		priority = 1000,
+		opts = {},
     }
 }
 
