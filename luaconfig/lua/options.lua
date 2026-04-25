@@ -4,11 +4,11 @@ vim.g.mapleader = ' '
 --Line numbers
 vim.wo.number = true
 
---Identation Size
+--Indentation Size
 vim.opt.shiftwidth=4
 vim.opt.tabstop=4
 vim.opt.softtabstop = 4
 
 --Spell Checker
-vim.opt.spelllang = 'en_us'
+vim.opt.spelllang = {'en_us','pt_br'}
 vim.opt.spell = true
