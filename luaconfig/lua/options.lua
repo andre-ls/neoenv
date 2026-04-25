@@ -8,3 +8,7 @@ vim.wo.number = true
 vim.opt.shiftwidth=4
 vim.opt.tabstop=4
 vim.opt.softtabstop = 4
+
+--Spell Checker
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
